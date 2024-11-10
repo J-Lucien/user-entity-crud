@@ -1,7 +1,6 @@
 const app = require('./app');
 const {sequelize} = require('./models');
 
-const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require('swagger-ui-express');
 
 const swaggerDocument = require('./openapi.json');
