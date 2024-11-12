@@ -1,0 +1,30 @@
+services:
+  app:
+    # image: node:18.20.4
+    build: .
+    # command: sh -c "npm install && npm run server"
+    ports:
+      - 127.0.0.1:3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    # environment:
+    #   MYSQL_HOST: mysql
+    #   MYSQL_USER: root
+    #   MYSQL_PASSWORD: secret
+    #   MYSQL_DB: userapi
+    container_name: user-entity-crud-api
+    depends_on:
+      - mysql
+    
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: userapi
+    container_name: mysql-db-user-entity
+
+volumes:
+  mysql-data:
